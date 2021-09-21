@@ -1,0 +1,14 @@
+{
+  "firstNumber": "First Number",
+  "secondNumber": "Second Number",
+  "operator": "Operator",
+  "calculate": "Calculate",
+  "location": "Location",
+  "timeInSec": "Time In Sec",
+  "longitude": "Longitude = ",
+  "latitude": "Latitude = ",
+  "resultAppBar" : "Results",
+  "emptyList": "No operations exists",
+  "showResults": "Show Results",
+  "showPending": "Show Pending"
+}
