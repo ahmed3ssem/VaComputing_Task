@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:va_task/helper/db_helper.dart';
-import 'package:va_task/home_model.dart';
+import 'package:va_task/model/home_model.dart';
 import 'package:va_task/presenter/home_presenter_componant.dart';
 import 'package:location/location.dart';
 import 'package:va_task/view/home_view_componant.dart';
@@ -54,11 +54,23 @@ class HomePresenter implements HomePresenterComponant{
     } else if (model.time.toString().isEmpty) {
       _component.onError('Please Enter the time');
     } else {
-      addToQueue(model);
+      addPendingOperation(model);
     }
   }
 
-  addToQueue(HomeModel model) async{
+   addPendingOperation(HomeModel model){
+    int id = 0;
+    String message = 'The Operation '+model.firstName.toString()+model.operator+model.secondName.toString();
+    DBHelper.addResult('result_table', {
+      'name': message,
+      'pending' : 'true'
+    }).then((value){
+       id = value[0]['id'] as int;
+       addToQueue(model , id);
+    });
+  }
+
+  addToQueue(HomeModel model , int operationId) async{
     String message = '';
     double sum = 0;
     scheduleMicrotask(() {
@@ -73,9 +85,7 @@ class HomePresenter implements HomePresenterComponant{
           sum = double.parse(model.firstName) / double.parse(model.secondName);
         }
         message = 'The Operation '+model.firstName.toString()+model.operator+model.secondName.toString()+' result = '+sum.toString();
-        DBHelper.addResult('result_table', {
-          'name': message,
-        }).then((value) => print('done'));
+        DBHelper.updateOperation(operationId , message);
         _component.onSuccess(message);
       });
     });

@@ -9,9 +9,9 @@ class ResultPresenter implements ResultPresenterComponant{
   List results = [];
 
   @override
-  void getResults() {
+  void getResults(String pending) {
     // TODO: implement getResults
-    DBHelper.getData('result_table').then((value){
+    DBHelper.getData(pending).then((value){
       if(value.isEmpty){
         _componant.emptyList('emptyList'.tr().toString());
       } else {

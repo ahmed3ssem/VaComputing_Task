@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location_platform_interface/location_platform_interface.dart';
-import 'package:va_task/home_model.dart';
+import 'package:va_task/model/home_model.dart';
 import 'package:va_task/presenter/home_presenter.dart';
 import 'package:va_task/presenter/home_presenter_componant.dart';
 import 'package:va_task/utils/common.dart';
@@ -8,7 +8,6 @@ import 'package:va_task/view/result_view.dart';
 import 'package:va_task/widget/show_message.dart';
 import 'package:va_task/widget/textfield_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 import 'home_view_componant.dart';
 
 class Home extends StatefulWidget {
@@ -145,7 +144,7 @@ class _HomeState extends State<Home> implements HomeViewComponent{
         style: ElevatedButton.styleFrom(
             primary: Colors.blue
         ),
-        onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => ResultView()),),
+        onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => ResultView('false')),),
         child:  Text('showResults'.tr().toString() , style:  const TextStyle(color: Colors.white)),
       ),
     );
@@ -158,7 +157,7 @@ class _HomeState extends State<Home> implements HomeViewComponent{
         style: ElevatedButton.styleFrom(
             primary: Colors.blue
         ),
-        onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => ResultView()),),
+        onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) =>  ResultView('true')),),
         child:  Text('showPending'.tr().toString() , style:  const TextStyle(color: Colors.white)),
       ),
     );

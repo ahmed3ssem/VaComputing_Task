@@ -5,7 +5,10 @@ import 'package:va_task/presenter/result_presenter_componant.dart';
 import 'package:va_task/view/result_view_componant.dart';
 
 class ResultView extends StatefulWidget{
-  const ResultView({Key? key}) : super(key: key);
+  String pending;
+
+
+  ResultView(this.pending, {Key? key}) : super(key: key);
 
   @override
   _ResultViewState createState() => _ResultViewState();
@@ -23,7 +26,7 @@ class _ResultViewState extends State<ResultView> implements ResultViewComponant{
     super.initState();
     _componant = ResultPresenter();
     _componant.setView(this);
-    _componant.getResults();
+    _componant.getResults(widget.pending);
   }
 
   @override

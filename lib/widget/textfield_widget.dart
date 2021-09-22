@@ -7,7 +7,7 @@ class TextFieldWidget extends StatefulWidget {
   final TextInputType _inputType;
 
 
-  TextFieldWidget(this._controller, this.name, this._inputType);
+   TextFieldWidget(this._controller, this.name, this._inputType);
 
   @override
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
