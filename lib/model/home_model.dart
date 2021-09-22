@@ -6,4 +6,5 @@ class HomeModel{
   String time;
 
   HomeModel(this.firstName, this.secondName, this.operator, this.time);
+
 }
